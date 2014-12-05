@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="mKo-YE-RfT">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="jZO-Uf-ESq">
+            <objects>
+                <collectionViewController id="FxH-nF-4Yv" customClass="BSHViewController" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="g0o-YE-1Hq">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="9B1-Yg-Zye" customClass="BSHCollectionViewGridLayout">
+                            <size key="itemSize" width="50" height="50"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells/>
+                        <connections>
+                            <outlet property="dataSource" destination="FxH-nF-4Yv" id="gc7-i5-YZZ"/>
+                            <outlet property="delegate" destination="FxH-nF-4Yv" id="iJE-WX-ban"/>
+                        </connections>
+                    </collectionView>
+                    <navigationItem key="navigationItem" id="U02-hG-qNi"/>
+                    <connections>
+                        <segue destination="xwD-vj-LgV" kind="push" identifier="ShowArtworkList" id="hQh-0W-dBp"/>
+                        <segue destination="5sq-EX-nSQ" kind="push" identifier="ShowDetail" id="Paq-k6-mOt"/>
+                    </connections>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2bM-IH-eTn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6" y="309"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="X9g-1d-inf">
+            <objects>
+                <navigationController id="mKo-YE-RfT" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="YvB-UH-aIO">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="FxH-nF-4Yv" kind="relationship" relationship="rootViewController" id="OH7-Nb-B73"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="thl-eW-SLp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-458" y="309"/>
+        </scene>
+        <!--Dynamic Images View Controller-->
+        <scene sceneID="ady-or-mZX">
+            <objects>
+                <collectionViewController id="xwD-vj-LgV" customClass="BSHDynamicImagesViewController" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="Xgv-T1-y1g">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="sCy-iK-UQh" customClass="BSHCollectionViewGridLayout">
+                            <size key="itemSize" width="50" height="50"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells/>
+                        <connections>
+                            <outlet property="dataSource" destination="xwD-vj-LgV" id="Pvc-aP-KmS"/>
+                            <outlet property="delegate" destination="xwD-vj-LgV" id="YLI-39-Syl"/>
+                        </connections>
+                    </collectionView>
+                    <navigationItem key="navigationItem" id="tEG-dy-wHY"/>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fhr-gI-Qjb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="446" y="-112"/>
+        </scene>
+        <!--Detail View Controller-->
+        <scene sceneID="YQe-xk-LmB">
+            <objects>
+                <collectionViewController id="5sq-EX-nSQ" customClass="BSHDetailViewController" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="XsQ-Va-5wS">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="3oE-oy-Mve" customClass="BSHCollectionViewGridLayout">
+                            <size key="itemSize" width="50" height="50"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells/>
+                        <connections>
+                            <outlet property="dataSource" destination="5sq-EX-nSQ" id="1O7-c7-o4v"/>
+                            <outlet property="delegate" destination="5sq-EX-nSQ" id="3hi-Sy-Rag"/>
+                        </connections>
+                    </collectionView>
+                    <navigationItem key="navigationItem" id="Y82-tM-S8U"/>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Pab-3Q-AVr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="446" y="628"/>
+        </scene>
+    </scenes>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination" type="retina4"/>
+    </simulatedMetricsContainer>
+</document>

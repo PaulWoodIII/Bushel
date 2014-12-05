@@ -6,8 +6,8 @@
 //  Copyright (c) 2014 paulwoodiii. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import <Bushel/BSHCollectionViewController.h>
 
-@interface BSHViewController : UIViewController
+@interface BSHViewController : BSHCollectionViewController
 
 @end

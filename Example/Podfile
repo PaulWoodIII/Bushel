@@ -2,6 +2,8 @@ source 'https://github.com/CocoaPods/Specs.git'
 
 target 'Bushel', :exclusive => true do
   pod "Bushel", :path => "../"
+  pod 'SDWebImage'
+  pod 'UIScrollView-InfiniteScroll'
 end
 
 target 'Tests', :exclusive => true do
