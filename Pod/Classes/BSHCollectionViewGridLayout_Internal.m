@@ -176,7 +176,7 @@
                     NSInteger aspectRatio = roundf((preferredSize.width / preferredSize.height) * 100);
                     [weights addObject:@(aspectRatio)];
                     if (preferredSize.height > 0) {
-                        totalItemSize += (preferredSize.width / preferredSize.height) * 200;
+                        totalItemSize += (preferredSize.width / preferredSize.height) * availableHeight/1.61803399;
                     }
                 }
                 else {
