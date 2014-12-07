@@ -13,5 +13,6 @@
 @interface BSHKeyValueDataSource : BSHBasicDataSource
 
 - (instancetype)initWithObject:(id)object NS_DESIGNATED_INITIALIZER;
+- (void)updateObject:(id)object;
 
 @end

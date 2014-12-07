@@ -38,6 +38,10 @@ static NSString * const BSHKeyValueDataSourceLabelKey = @"label";
     return self;
 }
 
+- (void)updateObject:(id)obj{
+    self.object = obj;
+}
+
 - (void)setItems:(NSArray *)items
 {
     // Filter out any items that don't have a value, because it looks sloppy when rows have a label but no value

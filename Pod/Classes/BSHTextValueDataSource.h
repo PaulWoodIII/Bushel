@@ -14,6 +14,7 @@
 @interface BSHTextValueDataSource : BSHDataSource
 
 - (instancetype)initWithObject:(id)object NS_DESIGNATED_INITIALIZER;
+- (void)updateObject:(id)obj;
 
 @property (nonatomic, copy) NSArray *items;
 

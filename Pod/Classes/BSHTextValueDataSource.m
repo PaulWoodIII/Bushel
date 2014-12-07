@@ -52,6 +52,10 @@ static NSString * const BSHTextValueDataSourceLabelKey = @"label";
     return self;
 }
 
+- (void)updateObject:(id)obj{
+    self.object = obj;
+}
+
 - (void)setObject:(id)object
 {
     if (object == _object)
