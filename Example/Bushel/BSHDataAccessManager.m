@@ -105,5 +105,20 @@
     }];
 }
 
+- (void)waitAndFailWithCompletionHandler:(void(^)(NSArray *content, NSError *error))handler{
+    // If the json data specified that we should delay the results, do so before calling the handler
+    float delayTime = 3.0;
+    NSError *error = [NSError errorWithDomain:@"ExampleErrorDomain" code:-1 userInfo:@{NSLocalizedDescriptionKey : @"This is an example error description"}];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayTime * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        handler(nil, error);
+    });
+}
+
+- (void)waitAndNoContentWithCompletionHandler:(void(^)(NSArray *content, NSError *error))handler{
+    float delayTime = 3.0;
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayTime * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        handler(nil,nil);
+    });
+}
 
 @end

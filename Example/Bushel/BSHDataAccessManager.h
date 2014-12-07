@@ -12,6 +12,10 @@
 
 - (void)fetchTop100ArtworkWithPage:(NSInteger)page completionHandler:(void(^)(NSArray *artworks, NSError *error))handler;
 
+- (void)waitAndFailWithCompletionHandler:(void(^)(NSArray *content, NSError *error))handler;
+
+- (void)waitAndNoContentWithCompletionHandler:(void(^)(NSArray *content, NSError *error))handler;
+
 + (BSHDataAccessManager *)manager;
 
 @end

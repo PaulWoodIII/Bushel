@@ -35,6 +35,8 @@
 		DA851DBF1A2FF21D0091222C /* BSHDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DA851DBE1A2FF21D0091222C /* BSHDetailViewController.m */; };
 		DA851DC21A3161CE0091222C /* SZAArtworkListKeyValueHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = DA851DC11A3161CE0091222C /* SZAArtworkListKeyValueHeader.m */; };
 		DA851DC51A316F4C0091222C /* BSHDetailDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = DA851DC41A316F4C0091222C /* BSHDetailDataSource.m */; };
+		DAAE063B1A33E68900304E90 /* BSHDisplayFailureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DAAE063A1A33E68900304E90 /* BSHDisplayFailureViewController.m */; };
+		DAAE063E1A33E69B00304E90 /* BSHDisplayNoContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DAAE063D1A33E69B00304E90 /* BSHDisplayNoContentViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -98,6 +100,10 @@
 		DA851DC11A3161CE0091222C /* SZAArtworkListKeyValueHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SZAArtworkListKeyValueHeader.m; sourceTree = "<group>"; };
 		DA851DC31A316F4C0091222C /* BSHDetailDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BSHDetailDataSource.h; sourceTree = "<group>"; };
 		DA851DC41A316F4C0091222C /* BSHDetailDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSHDetailDataSource.m; sourceTree = "<group>"; };
+		DAAE06391A33E68900304E90 /* BSHDisplayFailureViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BSHDisplayFailureViewController.h; sourceTree = "<group>"; };
+		DAAE063A1A33E68900304E90 /* BSHDisplayFailureViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSHDisplayFailureViewController.m; sourceTree = "<group>"; };
+		DAAE063C1A33E69B00304E90 /* BSHDisplayNoContentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BSHDisplayNoContentViewController.h; sourceTree = "<group>"; };
+		DAAE063D1A33E69B00304E90 /* BSHDisplayNoContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSHDisplayNoContentViewController.m; sourceTree = "<group>"; };
 		F73E84E35CC46FF59DBF020F /* libPods-Bushel.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Bushel.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -192,6 +198,10 @@
 				DA851DBE1A2FF21D0091222C /* BSHDetailViewController.m */,
 				DA851DC31A316F4C0091222C /* BSHDetailDataSource.h */,
 				DA851DC41A316F4C0091222C /* BSHDetailDataSource.m */,
+				DAAE06391A33E68900304E90 /* BSHDisplayFailureViewController.h */,
+				DAAE063A1A33E68900304E90 /* BSHDisplayFailureViewController.m */,
+				DAAE063C1A33E69B00304E90 /* BSHDisplayNoContentViewController.h */,
+				DAAE063D1A33E69B00304E90 /* BSHDisplayNoContentViewController.m */,
 			);
 			path = Bushel;
 			sourceTree = "<group>";
@@ -421,11 +431,13 @@
 				DA851DBC1A2EDC0E0091222C /* SZAPlaceholderView.m in Sources */,
 				DA851DC21A3161CE0091222C /* SZAArtworkListKeyValueHeader.m in Sources */,
 				DA851DB11A2ED79D0091222C /* BSHArtworkObject.m in Sources */,
+				DAAE063B1A33E68900304E90 /* BSHDisplayFailureViewController.m in Sources */,
 				6003F5A7195388D20070C39A /* BSHViewController.m in Sources */,
 				DA851DBF1A2FF21D0091222C /* BSHDetailViewController.m in Sources */,
 				DA851DB91A2EDB850091222C /* BSHDynamicImageCell.m in Sources */,
 				DA851DB61A2ED8C60091222C /* BSHDataAccessManager.m in Sources */,
 				DA851DAE1A2ED4E60091222C /* BSHDynamicImagesDataSource.m in Sources */,
+				DAAE063E1A33E69B00304E90 /* BSHDisplayNoContentViewController.m in Sources */,
 				DA851DC51A316F4C0091222C /* BSHDetailDataSource.m in Sources */,
 				6003F59A195388D20070C39A /* main.m in Sources */,
 			);

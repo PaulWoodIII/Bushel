@@ -58,7 +58,7 @@
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     
-    // Don't Set Items until the View Appears
+    // Don't set items until we know the view has been created
     [self.dataSource setItems:@[
                                 @{BSHDataSourceTitleKey:NSLocalizedString(@"Dynamicly Sized Image List", nil),
                                   BSHDataSourceActionKey:@"ShowArtworkList",
@@ -75,11 +75,11 @@
                                 @{BSHDataSourceTitleKey:NSLocalizedString(@"Wait and Show Failed", nil),
                                   BSHDataSourceActionKey:@"ShowFailure",
                                   BSHDataSourceImageNameKey:@"ShowFailureIcon",
-                                  BSHDataSourceActiveKey:@0},
+                                  BSHDataSourceActiveKey:@1},
                                 @{BSHDataSourceTitleKey:NSLocalizedString(@"Wait and Show No Content", nil),
                                   BSHDataSourceActionKey:@"ShowNoContent",
                                   BSHDataSourceImageNameKey:@"ShowNoContentIcon",
-                                  BSHDataSourceActiveKey:@0},
+                                  BSHDataSourceActiveKey:@1},
                                 ]];
 }
 

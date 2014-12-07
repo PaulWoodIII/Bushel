@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="mKo-YE-RfT">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="mKo-YE-RfT">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -29,6 +29,8 @@
                     <connections>
                         <segue destination="xwD-vj-LgV" kind="push" identifier="ShowArtworkList" id="hQh-0W-dBp"/>
                         <segue destination="5sq-EX-nSQ" kind="push" identifier="ShowDetail" id="Paq-k6-mOt"/>
+                        <segue destination="jHn-DZ-R04" kind="push" identifier="ShowFailure" id="DxP-jT-X6q"/>
+                        <segue destination="unN-8p-mPr" kind="push" identifier="ShowNoContent" id="hB7-R4-EIL"/>
                     </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2bM-IH-eTn" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -75,7 +77,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fhr-gI-Qjb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="446" y="-112"/>
+            <point key="canvasLocation" x="486" y="-1376"/>
         </scene>
         <!--Detail View Controller-->
         <scene sceneID="YQe-xk-LmB">
@@ -101,7 +103,59 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pab-3Q-AVr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="446" y="628"/>
+            <point key="canvasLocation" x="486" y="-738"/>
+        </scene>
+        <!--Display Failure View Controller-->
+        <scene sceneID="Vfk-aZ-O32">
+            <objects>
+                <collectionViewController id="jHn-DZ-R04" customClass="BSHDisplayFailureViewController" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="ORe-IN-syE">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="YkA-7C-Rtu" customClass="BSHCollectionViewGridLayout">
+                            <size key="itemSize" width="50" height="50"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells/>
+                        <connections>
+                            <outlet property="dataSource" destination="jHn-DZ-R04" id="Q8V-vj-W0l"/>
+                            <outlet property="delegate" destination="jHn-DZ-R04" id="NL3-T4-QJb"/>
+                        </connections>
+                    </collectionView>
+                    <navigationItem key="navigationItem" id="bRw-CE-YrA"/>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ogU-Pn-Zt1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="486" y="-92"/>
+        </scene>
+        <!--Display No Content View Controller-->
+        <scene sceneID="5ir-yu-5dw">
+            <objects>
+                <collectionViewController id="unN-8p-mPr" customClass="BSHDisplayNoContentViewController" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="l3I-cD-KwI">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="pvS-sl-Xnf" customClass="BSHCollectionViewGridLayout">
+                            <size key="itemSize" width="50" height="50"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells/>
+                        <connections>
+                            <outlet property="dataSource" destination="unN-8p-mPr" id="fE9-qR-Y2R"/>
+                            <outlet property="delegate" destination="unN-8p-mPr" id="etS-H4-azt"/>
+                        </connections>
+                    </collectionView>
+                    <navigationItem key="navigationItem" id="P5N-Zu-BwR"/>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dMi-5f-Akd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="486" y="549"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
