@@ -9,7 +9,7 @@
 
 Pod::Spec.new do |s|
   s.name             = "Bushel"
-  s.version          = "0.0.1"
+  s.version          = "0.1.0"
   s.summary          = "an opinionated UICollectionView framework"
   s.description      = <<-DESC
 					   Bushel is an iOS Collection View Framework forked from Apple's Collection View framework release at WWDC 2014. It is opinionated & constraining, which is just what you need to have something that is reliable.
