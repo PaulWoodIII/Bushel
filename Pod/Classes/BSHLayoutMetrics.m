@@ -89,6 +89,7 @@ CGFloat const BSHRowHeightDefault = 44;
 {
     BSHLayoutSectionMetrics *metrics = [[self alloc] init];
     metrics.rowHeight = BSHRowHeightDefault;
+    metrics.pageSize = 0;
     return metrics;
 }
 
@@ -99,6 +100,7 @@ CGFloat const BSHRowHeightDefault = 44;
         return nil;
 
     metrics->_rowHeight = _rowHeight;
+    metrics->_pageSize = _pageSize;
     metrics->_padding = _padding;
     metrics->_separatorInsets = _separatorInsets;
     metrics->_backgroundColor = _backgroundColor;
@@ -184,6 +186,9 @@ CGFloat const BSHRowHeightDefault = 44;
 
     if (metrics.rowHeight)
         self.rowHeight = metrics.rowHeight;
+    
+    if (metrics.pageSize)
+        self.pageSize = metrics.pageSize;
 
     if (metrics->_flags.backgroundColor)
         self.backgroundColor = metrics.backgroundColor;

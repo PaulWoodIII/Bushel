@@ -49,6 +49,7 @@ typedef CGSize (^BSHLayoutMeasureKindBlock)(NSString *kind, NSUInteger itemIndex
 @property (nonatomic, readonly) NSMutableDictionary *supplementalItemArraysByKind;
 - (void)enumerateArraysOfOtherSupplementalItems:(void(^)(NSString *kind, NSArray *items, BOOL *stop))block;
 @property (nonatomic, readonly) BSHGridLayoutSupplementalItemInfo *placeholder;
+@property (nonatomic) NSUInteger pageSize;
 @property (nonatomic) UIEdgeInsets insets;
 @property (nonatomic) UIEdgeInsets separatorInsets;
 @property (nonatomic) UIEdgeInsets sectionSeparatorInsets;

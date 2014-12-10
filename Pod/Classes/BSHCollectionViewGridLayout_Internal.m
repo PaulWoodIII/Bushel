@@ -23,7 +23,6 @@
     _items = [NSMutableArray array];
 	_supplementalItemArraysByKind = [NSMutableDictionary dictionary];
     _pinnableHeaderAttributes = [NSMutableArray array];
-    
     return self;
 }
 
@@ -164,30 +163,54 @@
         
         // Balanced Flow Layout
         if (self.showsItemsInBalancedFlowLayout){
-            
-            NSInteger itemIndex = 0;
-            CGFloat totalItemSize = 0;
-            NSMutableArray *weights = [NSMutableArray array];
-            for(BSHGridLayoutItemInfo *item in self.items) {
-                // Better have the measure block here or it'll not work
-                // might want to add an assert that makes you
-                if (item.needSizeUpdate && measureItemBlock) {
-                    CGSize preferredSize = measureItemBlock(indexPath(itemIndex), CGRectZero);
-                    NSInteger aspectRatio = roundf((preferredSize.width / preferredSize.height) * 100);
-                    [weights addObject:@(aspectRatio)];
-                    if (preferredSize.height > 0) {
-                        totalItemSize += (preferredSize.width / preferredSize.height) * availableHeight/1.61803399;
-                    }
-                }
-                else {
-                    item.frame = CGRectZero;
-                }
-                itemIndex++;
+            if (self.pageSize == 0) {
+                self.pageSize = self.items.count;
             }
-            NSInteger numberOfRows = MAX(roundf(totalItemSize / availableHeight), 1);
             
-            NSArray *partition = [BSHLinearPartition linearPartitionForSequence:weights numberOfPartitions:numberOfRows];
+            NSArray *itemsToSubPartition;
+            NSUInteger rangeStart = 0;
+            NSMutableArray *partitions = [NSMutableArray array];
             
+            while (rangeStart < self.items.count) {
+                NSRange partition = NSMakeRange(rangeStart, self.pageSize);
+                NSUInteger lastItemIndex = partition.location + partition.length;
+                if (lastItemIndex < self.items.count) {
+                    itemsToSubPartition = [self.items subarrayWithRange:partition];
+                }
+                else{
+                    lastItemIndex = self.items.count - rangeStart;
+                    partition = NSMakeRange(rangeStart, lastItemIndex);
+                    itemsToSubPartition = [self.items subarrayWithRange:partition];
+                }
+                NSLog(@"Range %d - %d: %@",rangeStart, rangeStart+partition.length, itemsToSubPartition);
+                
+                NSInteger itemIndex = 0;
+                CGFloat totalItemSize = 0;
+                NSMutableArray *weights = [NSMutableArray array];
+                for(BSHGridLayoutItemInfo *item in itemsToSubPartition) {
+                    // Better have the measure block here or it'll not work
+                    // might want to add an assert that makes you
+                    if (item.needSizeUpdate && measureItemBlock) {
+                        CGSize preferredSize = measureItemBlock(indexPath(itemIndex), CGRectZero);
+                        NSInteger aspectRatio = roundf((preferredSize.width / preferredSize.height) * 100);
+                        [weights addObject:@(aspectRatio)];
+                        if (preferredSize.height > 0) {
+                            totalItemSize += (preferredSize.width / preferredSize.height) * availableHeight/1.61803399;
+                        }
+                    }
+                    else {
+                        item.frame = CGRectZero;
+                    }
+                    itemIndex++;
+                }
+                NSInteger numberOfRows = MAX(roundf(totalItemSize / availableHeight), 1);
+                
+                NSArray *group = [BSHLinearPartition linearPartitionForSequence:weights numberOfPartitions:numberOfRows];
+                [partitions addObjectsFromArray:group];
+                
+                rangeStart += self.pageSize;
+            }
+
             int i = 0;
             
             //Offset for each Row
@@ -199,7 +222,7 @@
             // Amount to add after items are calculated
             CGFloat contentMaxValueInScrollDirection = 0;
             
-            for (NSArray *row in partition) {
+            for (NSArray *row in partitions) {
                 
                 CGFloat summedRatios = 0;
                 for (NSInteger j = i, n = i + [row count]; j < n; j++) {

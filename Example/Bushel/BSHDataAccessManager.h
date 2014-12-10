@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+static const NSUInteger kDefaultPageSize;
+
 @interface BSHDataAccessManager : NSObject
 
 - (void)fetchTop100ArtworkWithPage:(NSInteger)page completionHandler:(void(^)(NSArray *artworks, NSError *error))handler;

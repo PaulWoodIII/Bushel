@@ -9,6 +9,8 @@
 #import "BSHDataAccessManager.h"
 #import "BSHArtworkObject.h"
 
+static const NSUInteger kDefaultPageSize = 20;
+
 @implementation BSHDataAccessManager
 
 + (BSHDataAccessManager *)manager
@@ -91,8 +93,8 @@
             [artworks addObject:art];
         }
         
-        NSInteger pageStart = page * 20;
-        NSRange returnRange = NSMakeRange(pageStart, 20);
+        NSInteger pageStart = page * kDefaultPageSize;
+        NSRange returnRange = NSMakeRange(pageStart, kDefaultPageSize);
         NSArray *returnArray = nil;
         if (artworks.count > (returnRange.location + returnRange.length)) {
             returnArray = [artworks subarrayWithRange:returnRange];

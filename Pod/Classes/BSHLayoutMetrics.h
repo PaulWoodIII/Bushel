@@ -78,6 +78,9 @@ typedef void (^BSHLayoutSupplementaryItemConfigurationBlock)(id view, id dataSou
 /// The height of each row in the section. A value of BSHRowHeightVariable will cause the layout to invoke -collectionView:sizeFittingSize:forItemAtIndexPath: on the data source for each cell. Sections will inherit a default value from the data source of 44.
 @property (nonatomic) CGFloat rowHeight;
 
+// The size of each page will be used for Balanced Layouts to calculate the correct porportions per page instead of recalcualting for all objects and therefore having an inconcistant dynamic width and heigth when new data is added
+@property (nonatomic) NSUInteger pageSize;
+
 /// Padding around the cells for this section. The top & bottom padding will be applied between the headers & footers and the cells. The left & right padding will be applied between the view edges and the cells.
 @property (nonatomic) UIEdgeInsets padding;
 

@@ -64,6 +64,7 @@
     dataSource.defaultMetrics.padding = UIEdgeInsetsMake(5,5,5,5);
     dataSource.defaultMetrics.rowHeight = BSHRowHeightPartition;
     dataSource.page = 0;
+    dataSource.defaultMetrics.pageSize = 20;
     return dataSource;
 }
 

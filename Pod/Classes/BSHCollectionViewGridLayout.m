@@ -708,6 +708,7 @@ static inline NSUInteger BSHGridLayoutGetIndices(NSIndexPath *indexPath, NSUInte
     section.showsSectionSeparatorWhenLastSection = metrics.showsSectionSeparatorWhenLastSection;
     section.insets = metrics.padding;
     section.showsItemsInBalancedFlowLayout = partitionSection;
+    section.pageSize = metrics.pageSize;
     
 	for (BSHLayoutSupplementaryMetrics *suplMetrics in metrics.supplementaryViews) {
 		if ([suplMetrics.supplementaryViewKind isEqual:UICollectionElementKindSectionFooter] && !suplMetrics.height) {
