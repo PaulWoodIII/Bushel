@@ -181,9 +181,7 @@
                     lastItemIndex = self.items.count - rangeStart;
                     partition = NSMakeRange(rangeStart, lastItemIndex);
                     itemsToSubPartition = [self.items subarrayWithRange:partition];
-                }
-                NSLog(@"Range %d - %d: %@",rangeStart, rangeStart+partition.length, itemsToSubPartition);
-                
+                }                
                 NSInteger itemIndex = 0;
                 CGFloat totalItemSize = 0;
                 NSMutableArray *weights = [NSMutableArray array];
