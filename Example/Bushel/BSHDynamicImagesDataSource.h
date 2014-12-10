@@ -14,9 +14,9 @@
 
 @property (nonatomic, weak) UIRefreshControl *refreshControl;
 @property NSInteger page;
-
+@property BOOL moreContentAvailable;
 - (BSHArtworkObject *)itemWithID:(NSString *)idString;
 - (void)refreshControlAction:(UIRefreshControl *)refreshControl;
-- (void)loadNextPage:(void(^)(void))handler;
+- (void)loadNextPage:(void(^)(BOOL finished))handler;
 
 @end

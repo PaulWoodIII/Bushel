@@ -24,9 +24,3 @@
 #define COCOAPODS_VERSION_MINOR_SDWebImage_Core 7
 #define COCOAPODS_VERSION_PATCH_SDWebImage_Core 1
 
-// UIScrollView-InfiniteScroll
-#define COCOAPODS_POD_AVAILABLE_UIScrollView_InfiniteScroll
-#define COCOAPODS_VERSION_MAJOR_UIScrollView_InfiniteScroll 0
-#define COCOAPODS_VERSION_MINOR_UIScrollView_InfiniteScroll 5
-#define COCOAPODS_VERSION_PATCH_UIScrollView_InfiniteScroll 1
-

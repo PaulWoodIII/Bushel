@@ -8,7 +8,6 @@
 
 #import "BSHDynamicImagesViewController.h"
 #import "BSHDynamicImagesDataSource.h"
-#import <UIScrollView-InfiniteScroll/UIScrollView+InfiniteScroll.h>
 #import <Bushel/BSHBalancedFlowLayout.h>
 #import <Bushel/BSHSectionHeaderView.h>
 #import "BSHArtworkObject.h"
@@ -35,18 +34,6 @@
     self.refreshControl = myRefreshControl;
     
     self.collectionView.delegate = self;
-    
-    __weak typeof(&*self) weakself = self;
-    
-    // Add infinite scroll handler
-    [self.collectionView addInfiniteScrollWithHandler:^(UIScrollView* scrollView) {
-        __strong typeof(weakself) strongSelf = weakself;
-        
-        [strongSelf.dataSource loadNextPage:^{
-            // Finish infinite scroll animations
-            [scrollView finishInfiniteScroll];
-        }];
-    }];
     
     BSHLayoutSupplementaryMetrics *globalHeader = [self.dataSource newHeaderForKey:@"HeaderView"];
     globalHeader.visibleWhileShowingPlaceholder = YES;

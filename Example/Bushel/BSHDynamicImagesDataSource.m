@@ -12,6 +12,7 @@
 #import "BSHDynamicImageCell.h"
 #import "BSHDataAccessManager.h"
 #import "UICollectionReusableView+BSHGridLayout.h"
+#import "BSHInfiniteScrollFooterView.h"
 
 @implementation BSHDynamicImagesDataSource
 
@@ -19,6 +20,23 @@
     self = [super init];
     if (self) {
         self.page = 0;
+        self.moreContentAvailable = YES;
+        
+        BSHLayoutSupplementaryMetrics *footer = [self.defaultMetrics newFooter];
+        footer.supplementaryViewClass = [BSHInfiniteScrollFooterView class];
+        footer.backgroundColor = [UIColor clearColor];
+        footer.height = 44;
+        [footer configureWithBlock:^(BSHInfiniteScrollFooterView *view, BSHDynamicImagesDataSource *dataSource, NSIndexPath *indexPath) {
+            if (self.moreContentAvailable) {
+                [view.activityIndicator startAnimating];
+                [dataSource loadNextPage:^(BOOL finished) {
+                    
+                }];
+            }
+            else{
+                [view.activityIndicator stopAnimating];
+            }
+        }];
     }
     return self;
 }
@@ -28,6 +46,7 @@
         return;
     }
     self.page = 0;
+    self.moreContentAvailable = YES;
     [self resetContent];
     [self setNeedsLoadContent];
 }
@@ -47,13 +66,10 @@
 
 - (void)loadContent
 {
+    [self.refreshControl endRefreshing];
     [self loadContentWithBlock:^(BSHLoading *loading) {
         if (self.items.count > 0) {
-            [self.refreshControl endRefreshing];
             return;
-        }
-        if (self.refreshControl) {
-            [self.refreshControl beginRefreshing];
         }
         [[BSHDataAccessManager manager]
          fetchTop100ArtworkWithPage:self.page
@@ -64,17 +80,14 @@
              }
              if (error) {
                  [loading done:YES error:error];
-                 [self.refreshControl endRefreshing];
                  return;
              }
              if (artworks.count == 0) {
                  [loading done:YES error:error];
-                 [self.refreshControl endRefreshing];
              }
              else{
                  [loading updateWithContent:^(BSHDynamicImagesDataSource *me){
                      me.items = artworks;
-                     [me.refreshControl endRefreshing];
                      me.page++;
                  }];
              }
@@ -82,17 +95,47 @@
     }];
 }
 
-- (void)loadNextPage:(void(^)(void))handler{
+- (void)loadNextPage:(void(^)(BOOL finished))handler{
     [self loadContentWithBlock:^(BSHLoading *loading) {
         [[BSHDataAccessManager manager]
          fetchTop100ArtworkWithPage:self.page
          completionHandler:^(NSArray *artworks, NSError *error) {
-             NSMutableArray *appender = [NSMutableArray arrayWithArray:self.items];
-             [appender addObjectsFromArray:artworks];
-             [self setItems:appender];
-             self.page++;
-             if (handler) {
-                 handler();
+             
+             if (!loading.current) {
+                 [loading ignore];
+                 return;
+             }
+             if (error) {
+                 [loading done:YES error:error];
+                 [self.refreshControl endRefreshing];
+                 self.moreContentAvailable = NO;
+                 if (handler) {
+                     handler(NO);
+                 }
+                 return;
+             }
+             if (artworks.count == 0) {
+                 [loading done:YES error:error];
+                 [self.refreshControl endRefreshing];
+                 self.moreContentAvailable = NO;
+                 if (handler) {
+                     handler(NO);
+                 }
+             }
+             else{
+                 [loading updateWithContent:^(BSHDynamicImagesDataSource *me){
+                     NSMutableArray *appender = [NSMutableArray arrayWithArray:self.items];
+                     [appender addObjectsFromArray:artworks];
+                     [self setItems:appender];
+                     self.page++;
+                     
+                     // If you know the page size you can be smarter here!
+                     self.moreContentAvailable = YES;
+                     
+                     if (handler) {
+                         handler(YES);
+                     }
+                 }];
              }
          }];
     }];
