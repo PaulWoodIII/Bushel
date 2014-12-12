@@ -26,7 +26,6 @@
 - (NSURL *)url;
 - (NSURL *)mediumImageURL;
 - (NSURL *)largeImageURL;
-- (NSURL *)sourcePageURL;
 - (CGSize)imageSize;
 
 @end
