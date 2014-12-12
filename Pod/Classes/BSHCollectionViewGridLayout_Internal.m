@@ -188,7 +188,7 @@
                 for(BSHGridLayoutItemInfo *item in itemsToSubPartition) {
                     // Better have the measure block here or it'll not work
                     // might want to add an assert that makes you
-                    if (item.needSizeUpdate && measureItemBlock) {
+                    if (item.needSizeUpdate) {
                         CGSize preferredSize = measureItemBlock(indexPath(itemIndex), CGRectZero);
                         NSInteger aspectRatio = roundf((preferredSize.width / preferredSize.height) * 100);
                         [weights addObject:@(aspectRatio)];
@@ -217,9 +217,6 @@
             // Size of this Row
             CGFloat previousItemSize = 0;
             
-            // Amount to add after items are calculated
-            CGFloat contentMaxValueInScrollDirection = 0;
-            
             for (NSArray *row in partitions) {
                 
                 CGFloat summedRatios = 0;
@@ -241,7 +238,6 @@
 
                     offset.x += actualSize.width + margins.bottom;
                     previousItemSize = actualSize.height;
-                    contentMaxValueInScrollDirection = CGRectGetMaxY(frame);
                 }
                 
                 /**
